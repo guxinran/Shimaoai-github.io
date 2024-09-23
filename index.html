@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手机端界面</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f7f7f7;
+            font-family: Arial, sans-serif;
+        }
+        #time {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #text {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #image {
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+        #button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="time"></div>
+    <div id="text">这里是您要显示的文字</div>
+    <img id="image" src="码.png" alt="码">
+    <button id="button" onclick="window.location.href='http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=xA_eeub259YLQnljVhu2qj0L2lAGgMVp&authKey=mgHHMcz7Hzji8Wkk7Ols06C8gKZJLliQE1FkI9aoF%2BuQLMN4Z4SKwc9ZeuzEJ2qN&noverify=0&group_code=542685648'">点击跳转QQ群</button>
+
+    <script>
+        // 更新时间的函数
+        function updateTime() {
+            var now = new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai', hour12: false });
+            document.getElementById('time').textContent = now;
+        }
+        // 每秒更新时间
+        setInterval(updateTime, 1000);
+        // 初始化时间
+        updateTime();
+    </script>
+</body>
+</html>
