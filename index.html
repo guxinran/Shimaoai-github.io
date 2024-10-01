@@ -5,71 +5,71 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>图片轮播与时间显示</title>
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-  }
-  #clock {
-    margin: 20px;
-  }
-  #carousel {
-    margin: 20px;
-    position: relative;
-  }
-  #carousel img {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    display: none;
-  }
-  #carousel img.active {
-    display: block;
-  }
-  #carousel input[type="text"] {
-    margin: 10px;
-  }
-  #buttons {
-    margin-top: 20px;
-  }
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  #clock {
+    margin: 20px;
+  }
+  #carousel {
+    margin: 20px;
+    position: relative;
+  }
+  #carousel img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: none;
+  }
+  #carousel img.active {
+    display: block;
+  }
+  #buttons {
+    margin-top: 20px;
+  }
 </style>
 <script>
-  let currentImageIndex = 0;
-  const images = [1, 2, 3, 4, 5].map(num => `images/${num}.png`); // 图片路径数组
+  let currentImageIndex = 0;
+  const images = [1, 2, 3, 4, 5].map(num => `images/${num}.png`); // 图片路径数组
 
-  function updateCarousel() {
-    const imgElement = document.getElementById('carouselImage');
-    imgElement.src = images[currentImageIndex % images.length];
-    currentImageIndex++;
-  }
+  function updateCarousel() {
+    const imgElement = document.getElementById('carouselImage');
+    imgElement.src = images[currentImageIndex % images.length];
+    imgElement.classList.remove('active');
+    imgElement.classList.add('active');
+    currentImageIndex++;
+  }
 
-  function addToQueue() {
-    setTimeout(updateCarousel, 2000); // 每2秒更换图片
-  }
+  function addToQueue() {
+    setTimeout(updateCarousel, 2000); // 每2秒更换图片
+  }
 
-  window.onload = function() {
-    addToQueue(); // 页面加载完成后开始轮播
-  }
+  window.onload = function() {
+    addToQueue(); // 页面加载完成后开始轮播
+    setInterval(updateCarousel, 2000); // 每2秒更换图片
+  }
 </script>
 </head>
 <body>
-  <div id="clock"></div>
-  <div id="carousel">
-    <img id="carouselImage" class="active" src="images/1.png" alt="轮播图">
-  </div>
-  <input type="text" id="carouselText" placeholder="各种游戏同人资源分享，长期运营，超低价格，超多资源更新超级快，心动不如行动，快快点击下方跳转QQ群吧！">
-  <div id="buttons">
-    <button onclick="window.location.href='http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=0DPDpZWbHguiEtlAf8swCrbO1VEPjGm-&authKey=yVmV1%2F5bdw3Anem2zyUC4e%2BdR0LSiHOQTYW5EQ8lylnp%2FNHzTGIbwInf9nknOHxR&noverify=0&group_code=542685648';">跳转QQ群</button>
-    <button onclick="window.open('https://v.kuaishou.com/UqJOjq', '_blank');">跳转快手</button>
-    <button onclick="window.open('https://v.ixigua.com/iBNFjFtW/', '_blank');">跳转西瓜视频</button>
-  </div>
+  <div id="clock"></div>
+  <div id="carousel">
+    <img id="carouselImage" class="active" src="images/1.png" alt="轮播图">
+  </div>
+  <input type="text" id="carouselText" placeholder="点击跳转QQ群">
+  <div id="buttons">
+    <button onclick="window.location.href='https://jq.qq.com/?_wv=1027&k=5GXX4YB';">跳转QQ群</button>
+    <button onclick="window.open('https://v.kuaishou.com/UqJOjq', '_blank');">跳转快手</button>
+    <button onclick="window.open('https://v.ixigua.com/iBNFjFtW/', '_blank');">跳转西瓜视频</button>
+  </div>
 
-  <script>
-    function updateClock() {
-      const now = new Date();
-      const timeString = now.toLocaleTimeString('zh-CN', { hour12: false });
-      document.getElementById('clock').textContent = `北京时间：${timeString}`;
-    }
-    setInterval(updateClock, 1000); // 每秒更新时间
-  </script>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString('zh-CN', { hour12: false });
+      document.getElementById('clock').textContent = `北京时间：${timeString}`;
+    }
+    setInterval(updateClock, 1000); // 每秒更新时间
+  </script>
 </body>
 </html>
